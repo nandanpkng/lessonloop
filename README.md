@@ -88,23 +88,35 @@ const plan = await openai.chat.completions.create({
 
 ## Try It / Run Locally
 
-### Supported Platforms
-macOS, Linux, Windows (Node.js 20+).
+### Prerequisites & Supported Platforms
+- **Supported Platforms:** macOS, Linux, Windows
+- **Runtime:** Node.js 20+
+- **Credentials:** None required! The application includes a self-contained, offline-testable demo mode with pre-loaded curriculum standards, student rosters, and exit ticket assessment scores.
 
 ### Quick Start
+
 ```bash
+# 1. Clone repository
+git clone https://github.com/nandanpkng/lessonloop.git
 cd lessonloop
-pnpm start
-# Open http://localhost:3002
+
+# 2. Start local server (zero npm dependencies required)
+pnpm start   # or npm start / node src/server.js
+
+# 3. Open in browser
+# http://localhost:3002
 ```
 
-### Run Tests
+### Self-Contained Judge Walkthrough
+1. Navigate to `http://localhost:3002` in your web browser.
+2. Click **✦ Generate this week’s plan** to run the 5E lesson planning pipeline.
+3. Review the 5E lesson structure (Engage, Explore, Explain, Elaborate, Evaluate), named student differentiation supports, and exit ticket preview.
+4. Inspect the **Coverage Map** showing slipping vs. mastered standards.
+
+### Run Automated Tests
 ```bash
-pnpm test
+pnpm test   # or npm test / node --test
 ```
-
-### Judge-Testable Path
-Run `pnpm start` and open `http://localhost:3002`. Click **Generate this week’s plan** to exercise the complete planning workflow with built-in representative curriculum standards and safe fictional student evidence.
 
 ---
 
