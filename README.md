@@ -55,10 +55,6 @@ Production integrations are intentionally not claimed in the demo: Google Classr
 
 Built in the primary Codex Build Week session. Codex translated the implementation plan into the runnable planning experience, created the 5E plan contract, linked assessment evidence to named supports and a coverage map, then added local APIs, tests, privacy boundaries, and responsive product polish. Add the primary `/feedback` Session ID to this README and Devpost before submission.
 
-## Submission materials
-
-See [SUBMISSION_CHECKLIST.md](SUBMISSION_CHECKLIST.md) for the required Devpost materials, video script, accurate claims, and final handoff steps.
-
 ## License
 
 MIT. See [LICENSE](LICENSE).
