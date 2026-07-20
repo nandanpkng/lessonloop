@@ -8,7 +8,7 @@ Track: Education — OpenAI Build Week 2026
 
 ## Demo Video
 
-- **Watch on YouTube:** [https://www.youtube.com/watch?v=YOUR_VIDEO_ID](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+- **Watch on YouTube:** https://youtu.be/3ckW4c7YY5A
 
 ---
 
