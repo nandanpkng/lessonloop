@@ -1,0 +1,3 @@
+import test from 'node:test'; import assert from 'node:assert/strict'; import {classroom} from '../src/services/demo-data.js'; import {generatePlan} from '../src/services/plan-engine.js'; import {getCoverage} from '../src/services/coverage.js';
+test('generates a complete teacher-editable 5E plan',()=>{const plan=generatePlan(classroom);assert.equal(plan.sections.length,5);assert.equal(plan.differentiation.length,3);assert.equal(plan.standard.code,'5.NBT.A.1')});
+test('flags a slipping prerequisite standard',()=>{const coverage=getCoverage(classroom);assert.equal(coverage.standards.find(x=>x.code==='5.NBT.A.2').status,'Slipping')});
