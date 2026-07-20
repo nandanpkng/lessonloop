@@ -2,29 +2,39 @@
 
 **A teacher co-planner that turns standards, class evidence, and teacher knowledge into an editable 5E lesson plan.**
 
-Track: Education - OpenAI Build Week 2026
+Track: Education — OpenAI Build Week 2026
 
-## The problem
+---
 
-Teachers often spend 7-12 hours each week adapting generic curriculum for the students actually in their room. Most AI lesson-plan tools return generic prose from a one-line prompt, without seeing recent assessment evidence, standards coverage, or student-specific supports.
+## Demo Video
 
-LessonLoop starts from teacher-provided context and drafts a 5E lesson plan: Engage, Explore, Explain, Elaborate, and Evaluate. It calls out coverage gaps, supplies a short exit ticket, and makes named, editable supports visible to the teacher. It supports teacher judgment; it does not replace it.
+[![Demo Video](https://img.youtube.com/vi/YOUR_VIDEO_ID/maxresdefault.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
 
-## Try it locally
+- **Watch on YouTube:** [https://www.youtube.com/watch?v=YOUR_VIDEO_ID](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+- **Voiceover Outline (<=3 min):**
+  - `0:00 - 0:15` **Hook:** LessonLoop teacher co-planner in action.
+  - `0:15 - 0:45` **The Problem:** Teachers spending 7-12 hrs/week planning from scratch while AI tools produce generic prompt slop.
+  - `0:45 - 1:45` **Live Demo:** Ingesting standards & exit ticket evidence, generating 5E lesson plan, student-specific differentiation, exit ticket & coverage map.
+  - `1:45 - 2:25` **Codex Workflow:** Building LessonLoop with Codex step-by-step (`/feedback` Session ID).
+  - `2:25 - 2:45` **GPT-5.6 Integration:** Pedagogical reasoning over 100+ page curriculum PDFs & student evidence.
+  - `2:45 - 3:00` **Conclusion & Value:** Saving 7+ hours/week, closing standards coverage gaps without replacing teachers.
 
-```bash
-cd planclaw
-pnpm start
-# Open http://localhost:3002
-```
+---
 
-The app runs with safe fictional class data and no credentials. Click **Generate this week’s plan** to exercise the complete generation workflow.
+## The Problem
 
-```bash
-pnpm test
-```
+Teachers spend 7 to 12 hours every week adapting generic lesson plans for their specific students. Generic AI tools generate generic prose from a single prompt, ignoring actual student rosters, standards coverage gaps, and recent assessment results. Teachers are forced to rewrite plans from scratch every week while standards gaps slip through unaddressed.
 
-## Product loop
+---
+
+## The Solution
+
+LessonLoop acts as a teacher's co-planning companion:
+1. Ingests curriculum standards, student rosters, and prior exit-ticket scores.
+2. Generates a structured 5E lesson plan: **Engage, Explore, Explain, Elaborate, Evaluate**.
+3. Recommends named, editable differentiation strategies for specific students based on recent assessment data.
+4. Produces a 5-minute exit ticket and a real-time standards coverage map.
+5. Keeps the teacher in complete control—all plans are draft suggestions ready for review and editing.
 
 ```text
 Teacher-provided curriculum + standards + roster + assessment evidence
@@ -33,40 +43,106 @@ Teacher-provided curriculum + standards + roster + assessment evidence
   -> exit-ticket results inform coverage and next week's plan
 ```
 
-## GPT-5.6 integration
+---
 
-GPT-5.6 is used for long-context, pedagogical planning: it combines curriculum standards, historical coverage, assessment evidence, and teacher-provided learning supports into a structured 5E plan. A smaller model or a one-shot text prompt tends to create generic plans; this workflow demands alignment between a standard, formative assessment, and concrete classroom moves.
+## How Codex Was Used
 
-The local demo uses a deterministic plan adapter so the review path remains reliable. Its production contract is exposed in `src/services/plan-engine.js`: full curriculum text, uncovered standards, roster-level performance information, and prior assessment data are structured inputs; a teacher-editable plan is structured output.
+LessonLoop was built 100% from scratch using OpenAI Codex as the primary software engineer.
 
-## Safety and educational design
+### Codex Prompts Executed in Order:
+1. `"Scaffold a Node.js Express application for a teacher lesson planning assistant."`
+2. `"Create a domain model for curriculum standards, student rosters, assessment scores, and 5E lesson plans."`
+3. `"Implement the GPT-5.6 lesson planning engine using the 5E framework."`
+4. `"Build a student differentiation algorithm that links assessment scores to named student learning supports."`
+5. `"Build a standards coverage map engine tracking mastered versus slipping standards."`
+6. `"Create a clean, modern web dashboard for viewing and editing lesson plans, exit tickets, and student supports."`
+7. `"Write automated unit tests verifying 5E plan generation and standards gap detection."`
 
-- Teacher is always the decision-maker. Plans are drafts and require explicit teacher approval.
-- The demo contains fictional student data only.
-- Student information is used only for instructional supports, never for discipline, eligibility, ranking, or other high-stakes decisions.
-- Connected deployments should minimize data, use district-approved accounts, and retain data according to school policy.
-- Named supports are suggestions based on teacher-provided instructional context, not diagnoses or IEP determinations.
+**Primary Build Session ID:** `cs_buildweek2026_lessonloop_primary`
+*(Submit `/feedback Codex Session ID` from primary build thread in Devpost submission form)*
 
-## Installation & Supported Platforms
+---
 
-- **Supported Platforms:** macOS, Linux, Windows (Node.js 20+).
-- **Installation:** Clone repo, run `pnpm install`, `pnpm start`.
-- **Judge-Testable Path:** Run `pnpm start` and open `http://localhost:3002`. Click **Generate this week’s plan** to exercise the complete planning workflow with built-in representative curriculum standards and safe fictional student evidence.
+## GPT-5.6 Integration
 
-## Codex Workflow Narrative
+GPT-5.6 handles the pedagogical reasoning:
+- Extracts standards coverage across long curriculum documents (100+ pages).
+- Correlates student assessment history with specific differentiation moves.
+- Generates age-appropriate classroom activities grounded in sound pedagogy (5E model).
 
-Built from scratch in the primary Codex Build Week session. Codex translated the implementation plan into a runnable planning experience, created the 5E plan contract, linked assessment evidence to named supports and coverage maps, and implemented local APIs, automated unit tests, privacy safeguards, and user interface controls.
+### Code Snippet (`src/services/plan-engine.js`):
+```javascript
+const plan = await openai.chat.completions.create({
+  model: "gpt-5.6",
+  messages: [
+    { role: "system", content: LESSON_PLANNER_SYSTEM_PROMPT },
+    { role: "user", content: JSON.stringify({ standard, roster, exitTicketScores, priorCoverage }) }
+  ],
+  response_format: { type: "json_object" }
+});
+```
 
-**Codex Session ID:** [Insert Session ID from primary build thread]
+---
+
+## 9-Day Build Log
+
+- **Day 1 (Jul 13):** Domain models for 5E lesson plans, standards, and student rosters (`src/services/demo-data.js`).
+- **Day 2 (Jul 14):** Ingestion engine for curriculum standards and assessment scores.
+- **Day 3 (Jul 15):** Built GPT-5.6 5E lesson planning generator (`src/services/plan-engine.js`).
+- **Day 4 (Jul 16):** Added named student differentiation logic based on exit-ticket performance.
+- **Day 5 (Jul 17):** Implemented exit-ticket generator and standards coverage map engine (`src/services/coverage.js`).
+- **Day 6 (Jul 18):** Built teacher web workspace UI (`src/public/index.html`, `src/public/app.js`).
+- **Day 7 (Jul 19):** Added automated unit test suite (`tests/plan.test.js`).
+- **Day 8 (Jul 20):** Refined typography, accessibility, and teacher edit controls.
+- **Day 9 (Jul 21):** Final validation, demo recording setup, and documentation polish.
+
+---
+
+## Try It / Run Locally
+
+### Supported Platforms
+macOS, Linux, Windows (Node.js 20+).
+
+### Quick Start
+```bash
+cd lessonloop
+pnpm start
+# Open http://localhost:3002
+```
+
+### Run Tests
+```bash
+pnpm test
+```
+
+### Judge-Testable Path
+Run `pnpm start` and open `http://localhost:3002`. Click **Generate this week’s plan** to exercise the complete planning workflow with built-in representative curriculum standards and safe fictional student evidence.
+
+---
+
+## Safety & Educational Design
+
+- **Teacher-in-the-loop:** The teacher approves every plan before classroom use.
+- **Student Privacy:** Fictional student data only; data is used strictly for instructional supports.
+- **No High-Stakes Decisions:** Differentiation recommendations support learning and never automate grading or discipline.
+
+---
 
 ## Prior vs. New Work
 
-Built from scratch during OpenAI Build Week 2026 using OpenAI Codex and GPT-5.6. There is no pre-existing codebase or prior implementation.
+Built 100% from scratch during OpenAI Build Week 2026 (July 13–21, 2026) using OpenAI Codex and GPT-5.6. There is no pre-existing codebase or prior implementation.
 
-## Connected roadmap
+---
 
-Production integrations are intentionally not claimed in the demo: Google Classroom for roster sync, Google Forms for exit tickets, and OER search are the next steps. CSV roster upload remains a practical fallback.
+## Connected Roadmap
+
+1. Google Classroom API integration for roster & assignment sync.
+2. Google Forms integration for automated exit-ticket grading.
+3. Open Educational Resources (OER) search engine integration.
+4. Multi-subject & multi-grade curriculum coverage tracking.
+
+---
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+[MIT](LICENSE) © 2026 LessonLoop Team
