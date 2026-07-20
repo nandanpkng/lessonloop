@@ -8,16 +8,7 @@ Track: Education — OpenAI Build Week 2026
 
 ## Demo Video
 
-[![Demo Video](https://img.youtube.com/vi/YOUR_VIDEO_ID/maxresdefault.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
-
 - **Watch on YouTube:** [https://www.youtube.com/watch?v=YOUR_VIDEO_ID](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
-- **Voiceover Outline (<=3 min):**
-  - `0:00 - 0:15` **Hook:** LessonLoop teacher co-planner in action.
-  - `0:15 - 0:45` **The Problem:** Teachers spending 7-12 hrs/week planning from scratch while AI tools produce generic prompt slop.
-  - `0:45 - 1:45` **Live Demo:** Ingesting standards & exit ticket evidence, generating 5E lesson plan, student-specific differentiation, exit ticket & coverage map.
-  - `1:45 - 2:25` **Codex Workflow:** Building LessonLoop with Codex step-by-step (`/feedback` Session ID).
-  - `2:25 - 2:45` **GPT-5.6 Integration:** Pedagogical reasoning over 100+ page curriculum PDFs & student evidence.
-  - `2:45 - 3:00` **Conclusion & Value:** Saving 7+ hours/week, closing standards coverage gaps without replacing teachers.
 
 ---
 
@@ -57,9 +48,6 @@ LessonLoop was built 100% from scratch using OpenAI Codex as the primary softwar
 5. `"Build a standards coverage map engine tracking mastered versus slipping standards."`
 6. `"Create a clean, modern web dashboard for viewing and editing lesson plans, exit tickets, and student supports."`
 7. `"Write automated unit tests verifying 5E plan generation and standards gap detection."`
-
-**Primary Build Session ID:** `cs_buildweek2026_lessonloop_primary`
-*(Submit `/feedback Codex Session ID` from primary build thread in Devpost submission form)*
 
 ---
 
