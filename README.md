@@ -47,13 +47,25 @@ The local demo uses a deterministic plan adapter so the review path remains reli
 - Connected deployments should minimize data, use district-approved accounts, and retain data according to school policy.
 - Named supports are suggestions based on teacher-provided instructional context, not diagnoses or IEP determinations.
 
+## Installation & Supported Platforms
+
+- **Supported Platforms:** macOS, Linux, Windows (Node.js 20+).
+- **Installation:** Clone repo, run `pnpm install`, `pnpm start`.
+- **Judge-Testable Path:** Run `pnpm start` and open `http://localhost:3002`. Click **Generate this week’s plan** to exercise the complete planning workflow with built-in representative curriculum standards and safe fictional student evidence.
+
+## Codex Workflow Narrative
+
+Built from scratch in the primary Codex Build Week session. Codex translated the implementation plan into a runnable planning experience, created the 5E plan contract, linked assessment evidence to named supports and coverage maps, and implemented local APIs, automated unit tests, privacy safeguards, and user interface controls.
+
+**Codex Session ID:** [Insert Session ID from primary build thread]
+
+## Prior vs. New Work
+
+Built from scratch during OpenAI Build Week 2026 using OpenAI Codex and GPT-5.6. There is no pre-existing codebase or prior implementation.
+
 ## Connected roadmap
 
 Production integrations are intentionally not claimed in the demo: Google Classroom for roster sync, Google Forms for exit tickets, and OER search are the next steps. CSV roster upload remains a practical fallback.
-
-## Codex workflow
-
-Built in the primary Codex Build Week session. Codex translated the implementation plan into the runnable planning experience, created the 5E plan contract, linked assessment evidence to named supports and a coverage map, then added local APIs, tests, privacy boundaries, and responsive product polish. Add the primary `/feedback` Session ID to this README and Devpost before submission.
 
 ## License
 
